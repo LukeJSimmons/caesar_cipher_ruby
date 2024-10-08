@@ -11,7 +11,11 @@ def caesar_cipher(str, num)
                  end
 
       char_num = (char_num + num - 1) % 26 + 1
-      new_str << (char_num + 'a'.ord - 1).chr
+      new_str << if char =~ /[a-z]/
+                  (char_num + 'a'.ord - 1).chr
+                else
+                  (char_num + 'A'.ord - 1).chr
+                end
 
     else
       new_str << char
@@ -21,4 +25,4 @@ def caesar_cipher(str, num)
   new_str
 end
 
-p caesar_cipher('What a string!', 3)
+p caesar_cipher('hello world', 2)
